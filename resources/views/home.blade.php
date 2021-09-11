@@ -25,7 +25,7 @@
                <div class="my-3">
                    <select name="sort" id="sort" class="form-select" aria-label="Default select example">
                        <option value="name" @if ( request()->sort == 'name' || !request()->has('sort') ) selected @endif>По названию</option>
-                       <option value="price"@if ( request()->sort == 'price') selected @endif>По цене</option>
+                       <option value="price" @if ( request()->sort == 'price') selected @endif>По цене</option>
                    </select>
                </div>
                <div class="mb-3">
