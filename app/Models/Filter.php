@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\FilterGroup;
-use App\Models\Product;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Filter extends Model
 {
@@ -20,11 +20,12 @@ class Filter extends Model
         'group_id'  =>  'integer'
     ];
 
-    public function group() {
+    public function group(): BelongsTo
+    {
         return $this->belongsTo(FilterGroup::class);
     }
 
-    public function products()
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
