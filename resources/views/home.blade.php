@@ -50,8 +50,15 @@
                                     {{ Str::limit($product->content, 150) }}
                                 </p>
                                 <ul style="min-height: 80px">
-                                    @foreach( $product->attributes as $attribute )
-                                        <li class="f-italic">{{ $attribute->name }}</li>
+                                    @foreach( $product->attributes->groupBy('group_id') as $group )
+                                        <li>
+                                            <span class="fw-bold">{{ $group->first()->group->name }}</span>
+                                            <ul>
+                                                @foreach( $group as $attribute )
+                                                    <li class="f-italic">{{ $attribute->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
