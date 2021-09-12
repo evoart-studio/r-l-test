@@ -20,14 +20,14 @@ class HomeController extends Controller
     public function catalog(Request $request)
     {
         $this->validate($request, [
-            'sort' => 'required|alpha',
-            'order' => 'required|alpha',
+            'sort' => 'alpha',
+            'order' => 'alpha',
             'filter' => 'array',
             'filter.*' => 'integer',
         ]);
 
-        $sort = $request->get('sort');
-        $order = $request->get('order');
+        $sort = $request->get('sort') ?? 'name';
+        $order = $request->get('order') ?? 'asc';
 
         $filters = FilterGroup::all();
 
